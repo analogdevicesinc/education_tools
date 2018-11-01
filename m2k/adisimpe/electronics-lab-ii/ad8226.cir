@@ -1,0 +1,127 @@
+* AD8226 SPICE Macro-model  
+* Description: Amplifier 
+* Generic Desc: 36V Bipolar InAmp Low Cost&Power G1-1000
+* Developed by: PRB IAP ADI
+* Revision History: 08/10/2012 - Updated to new header style
+* 3.0 (09/2009) 
+* Copyright 2012 by Analog Devices.
+*
+* Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement. Use of this model
+* indicates your acceptance with the terms and provisions in the License Statement.
+*
+* BEGIN Notes:
+*
+* Not Modeled:
+*
+* Parameters modeled include:
+*
+* END Notes
+*
+* Node assignments
+*                 inverting input
+*                 |   RG
+*                 |   |    RG
+*                 |   |    |  non_inverting input
+*                 |   |    |    |    negative supply
+*                 |   |    |    |    |    ref
+*                 |   |    |    |    |    |   output
+*                 |   |    |    |    |    |    |     positive supply
+*                 |   |    |    |    |    |    |     |
+.SUBCKT AD8226  IN-  RG-  RG+  IN+  -Vs   REF  VOUT  +Vs         
+** INPUT STAGE
+R1 N009 N008 50E3
+R2 N008 Inverting_Out 50E3
+R3 N013 noninverting_out 50000
+R4 REF N013 50k
+R5 RG- N003 24700
+R6 RG+ N012 24724
+D3 N003 P001 D
+D4 P002 N003 D
+V3 P002 VNEGx 0.84
+V4 VPOSx P001 .61
+D5 N012 P003 D
+D6 P004 N012 D
+V5 P004 VNEGx 0.84
+V6 VPOSx P003 .61
+D7 N005 P005 D
+D8 P006 N005 D
+V7 P006 VNEGx 0
+V8 VPOSx P005 0
+D9 N019 P007 D
+D10 P008 N019 D
+V9 P008 VNEGx 0
+V10 VPOSx P007 0
+D11 N009 P009 D
+D12 P010 N009 D
+V11 P010 N016 0.750
+V12 N010 P009 0.83
+D13 REF P011 D
+D14 P012 REF D
+V13 P012 VNEGx .3
+V14 VPOSx P011 .3
+D15 N013 P013 D
+D16 P014 N013 D
+V15 P014 VNEGx 0.6
+V16 VPOSx P013 0.6
+E4 Inverting_Out 0 N003 0 1
+E5 noninverting_out 0 N012 0 1
+Q1 Inv_Fdbk N002 RG- 0 PNP
+Q2 Pos_Fdbk N015 RG+ 0 PNP
+V1 VBIAS -Vs -10
+I1 Pos_Fdbk VBIAS 2E-6
+I2 Inv_Fdbk VBIAS 2E-6
+
+C1 N003 Inv_Fdbk 4.035e-12
+C2 N012 Pos_Fdbk 4.0e-12
+E8 N002 0 N005 0 1
+E9 N015 0 N019 0 1
+VOSI_Neg N004 IN- 25E-6
+VOSI_Pos IN+ N017 24E-6
+VOSO VOUT N011 300E-6
+C3 RG- 0 .242e-12
+C4 RG+ 0 .1635e-12
+I23 IN- 0 -22.3E-9
+I24 IN+ 0 -22E-9
+G1 0 IN+ N020 N021 .7e-9
+R13 IN+ N020 10e9
+R14 N020 IN- 10e9
+R15 +Vs N021 10e9
+R16 N021 -Vs 10e9
+G2 0 IN- N020 N021 .7e-9
+E10 VPOSx 0 +Vs 0 1
+I3 +Vs -Vs 300E-6
+G3 +Vs -Vs +Vs -Vs 1e-6
+E11 VNEGx 0 -Vs 0 1
+
+R17 VBIAS Inv_Fdbk 10e9
+R18 Pos_Fdbk VBIAS 10e9
+H3 N006 N004 V24 14
+V24 N001 0 0
+R19 N001 0 .0166
+H4 N011 N009 V25 100
+V25 N007 0 0
+R20 N007 0 .0166
+H5 N018 N017 V26 14
+V26 N014 0 0
+R21 N014 0 .0166
+G4 0 N005 N006 N005 1E-3
+G5 0 N019 N018 N019 1E-3
+G6 0 N003 VBIAS Inv_Fdbk 1
+G7 0 N012 VBIAS Pos_Fdbk 1
+G8 0 N009 N013 N008 1
+R10 N005 0 10e9
+R7 N003 0 10E9
+R11 N019 0 10E9
+R8 N012 0 10E9
+R9 N009 0 10E9
+
+
+H1 VPOSx N010 POLY(1) VOSO 0 0 8000
+H2 N016 VNEGx POLY(1) VOSO 0 0 8000
+
+* MODELS USED
+*
+.model D D
+.model PNP PNP (BF=10E5 VAF=20000)
+.ENDS AD8226
+

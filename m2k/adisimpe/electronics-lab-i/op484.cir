@@ -1,0 +1,161 @@
+* OP484 SPICE Macro-model           
+* Description: Amplifier
+* Generic Desc: 3/30V, BIP, OP, Low Noise, RRIO, 4X
+* Developed by: ARG / ADSC
+* Revision History: 08/10/2012 - Updated to new header style
+* 1.0 (11/1995)
+* Copyright 1993, 2012 by Analog Devices
+*
+* Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement.  Use of this model
+* indicates your acceptance of the terms and provisions in the License Statement.
+*
+* BEGIN Notes: 
+*
+* Not Modeled:
+*    
+* Parameters modeled include:
+*
+* END Notes
+*
+* Node assignments
+*                non-inverting input
+*                |  inverting input
+*                |  |  positive supply
+*                |  |  |  negative supply
+*                |  |  |  |  output
+*                |  |  |  |  |
+.SUBCKT OP484    1  2  99 50 45
+*
+* INPUT STAGE
+*
+Q1   5    2    3    QIN 1
+Q2   6    11   3    QIN 1
+Q3   7    2    4    QIP 1
+Q4   8    11   4    QIP 1
+DC1  2    11   DC
+DC2  11   2    DC
+Q5   4    9    99   QIP 1
+Q6   9    9    99   QIP 1
+Q7   3    10   50   QIN 1
+Q8   10   10   50   QIN 1
+R1   99   5    4E3
+R2   99   6    4E3
+R3   7    50   4E3
+R4   8    50   4E3
+IREF 9    10   50.5E-6
+EOS  1    11   POLY(2) (22,98) (14,98) -25E-6 1E-2 1
+IOS  2    1    1E-9
+CIN  1    2    2E-12
+GN1  98   1    (17,98) 1E-3
+GN2  98   2    (23,98) 1E-3
+*
+* VOLTAGE NOISE SOURCE WITH FLICKER NOISE
+*
+VN1  13   98   DC 2
+VN2  98   15   DC 2
+DN1  13   14   DEN
+DN2  14   15   DEN
+*
+* CURRENT NOISE SOURCE WITH FLICKER NOISE
+*
+VN3  16   98   DC 2
+VN4  98   18   DC 2
+DN3  16   17   DIN
+DN4  17   18   DIN
+*
+* 2ND CURRENT NOISE SOURCE WITH FLICKER NOISE
+*
+VN5  19   98   DC 2
+VN6  98   24   DC 2
+DN5  19   23   DIN
+DN6  23   24   DIN
+*
+* GAIN STAGE
+*
+EREF 98   0    POLY(2) (99,0) (50,0) 0 0.5 0.5
+G1   98   20   POLY(2) (6,5) (8,7) 0 0.5E-3 0.5E-3
+R9   20   98   1E3
+*
+* COMMON MODE STAGE WITH ZERO AT 100HZ
+*
+ECM  98   21   POLY(2) (1,98) (2,98) 0 0.5 0.5
+R10  21   22   1
+R11  22   98   100E-6
+C4   21   22   1.592E-3
+*
+* NEGATIVE ZERO AT 20MHZ
+*
+E1   27   98   (20,98) 1E6
+R17  27   28   1
+R18  28   98   1E-6
+C8   25   26   7.958E-9
+ENZ  25   98   (27,28) 1
+VNZ  26   98   DC 0
+FNZ  27   28   VNZ -1
+*
+* POLE AT 40MHZ
+*
+G4   98   29   (28,98) 1
+R19  29   98   1
+C9   29   98   3.979E-9
+*
+* POLE AT 40MHZ
+*
+G5   98   30   (29,98) 1
+R20  30   98   1
+C10  30   98   3.979E-9
+*
+* OUTUT STAGE
+*
+ISY  99   50   0.276E-3
+GIN  50   31   POLY(1) (30,98) .862574E-6 505.879E-6
+RIN  31   50   2.75E6
+VB   99   32   0.7
+Q11  32   31   33   QON 1
+R21  33   34   4.5E3
+I1   34   50   50E-6
+R22  99   35   6E3
+Q12  36   36   35   QOP 1
+I2   36   50   50E-6
+R23  99   37   2.6E3
+R24  34   38   5E3
+Q13  39   36   37   QOP 1
+Q14  39   38   40   QON 1.5
+R25  40   50   40
+Q15  39   39   41   QON 1
+R26  41   42   1E3
+R27  99   43   220
+Q16  44   44   43   QOP 1.5
+Q17  44   39   42   QON 1
+R28  42   50   2E3
+VSCP 99   97   DC 0.088
+FSCP 46   99   VSCP 1
+RSCP 46   99   40
+Q20  44   46   99   QOP 1
+Q18  45   44   97   QOP 4.5
+Q19  45   34   51   QON 4.5
+VSCN 51   50   DC 0.081
+FSCN 50   47   VSCN 1
+RSCN 47   50   40
+Q21  34   47   50   QON 1
+CC2  31   45   20E-12
+CF1  31   34   15E-12
+CF2  31   42   15E-12
+CO1  34   45   15E-12
+CO2  42   45   5E-12
+D3   45   99   DX
+D4   50   45   DX
+.MODEL DC D(IS=130E-21)
+.MODEL DX D()
+.MODEL DEN D(RS=100 KF=12E-15 AF=1)
+.MODEL DIN D(RS=5.358 KF=56E-15 AF=1)
+.MODEL QIN NPN(BF=120 VA=200 IS=0.5E-16)
+.MODEL QIP PNP(BF=90 VA=60 IS=0.5E-16)
+.MODEL QON NPN(BF=200 VA=200 IS=0.5E-16 RC=50)
+.MODEL QOP PNP(BF=200 VA=200 IS=0.5E-16 RC=160)
+.ENDS
+
+
+
+
+

@@ -1,0 +1,122 @@
+* AD8561 SPICE Macro-Model Typcial Values
+* Description: Amplifier
+* Generic Desc: 5nsec single supply comparator
+* Developed by: TAM / ADSC 
+* Revision History: 08/10/2012 - Updated to new header style
+* 2.1 (11/1998)
+* Copyright 2012 by Analog Devices, Inc.
+*
+* Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement. Use of this model 
+* indicates your acceptance of the terms and provisions in the License Statement.
+*
+* BEGIN Notes:
+*
+* Not Modeled:
+*    
+* Parameters modeled include: 
+*
+* END Notes
+*
+* Node assignments
+*		non-inverting input
+*		|	inverting input
+*		|	|	positive supply
+*		|	|	|	negative supply
+*		|	|	|	|	Latch
+*		|	|	|	|	|	DGND
+*		|	|	|	|	|	|	Q
+*		|	|	|	|	|	|	|	QNOT
+*		|	|	|	|	|	|	|	|
+.SUBCKT AD8561	1	2	99	50	80	51	45	65
+*
+* INPUT STAGE
+*
+*
+Q1     4  3 5 PIX
+Q2     6  2 5 PIX
+IBIAS 99  5 800E-6 
+RC1    4 50 1E3
+RC2    6 50 1E3
+CL1    4  6 1E-12
+CIN    1  2 3E-12
+VCM1  99  7 1
+D1     5  7 DX
+EOS    3  1 POLY(1) (31,98) 1E-3 1
+*
+* Reference Voltages
+*
+EREF  98 0 POLY(2) (99,0) (50,0) 0 0.5 0.5
+RREF  98 0 100E3
+*
+* CMRR=80dB, ZERO AT 1kHz
+*
+ECM1 30 98 POLY(2) (1,98) (2,98) 0 0.5 0.5
+RCM1 30 31 10E3
+RCM2 31 98 1
+CCM1 30 31 15.9E-9
+*
+* Latch Section
+*
+RX 80 51 100E3
+E1 10 98 (4,6) 1
+S1 10 11 (80,51) SLATCH1
+R2 11 12 1
+C3 12 98 10E-12
+E2 13 98 (12,98) 1
+R3 12 13 500
+*
+* Power Supply Section
+*
+GSY1 99 52 POLY(1) (99,50) 4E-3 -2.6E-4
+GSY2 52 50 POLY(1) (99,50) 3.7E-3 -.6E-3
+RSY  52 51 10
+*
+* Gain Stage Av=250 fp=100MHz
+*
+G2 98 20 (12,98) 0.25
+R1 20 98 1000
+C1 20 98 10E-13
+E3 97  0 (99,0) 1
+E4 52  0 (51,0) 1
+V1 97 21 DC 0.8
+V2 22 52 DC 0.8
+D2 20 21 DX
+D3 22 20 DX
+*
+* Q Output
+*
+Q3  99 41 46 NOX
+Q4  47 42 51 NOX
+RB1 43 41 200
+RB2 40 42 200
+CB1 99 41 10E-12
+CB2 42 51 100E-12
+RO1 46 44 1
+D4  44 45 DX
+RO2 47 45 500
+EO1 97 43 (20,51) 1
+EO2 40 51 (20,51) 1
+*
+* Q NOT Output
+*
+Q5  99 61 66 NOX
+Q6  67 62 51 NOX
+RB3 63 61 200
+RB4 60 62 200
+CB3 99 61 10E-12
+CB4 62 51 100E-12
+RO3 66 64 1
+D5  64 65 DX
+RO4 67 65 500
+EO3 63 51 (20,51) 1
+EO4 97 60 (20,51) 1
+*
+* MODELS
+*
+.MODEL PIX PNP(BF=100,IS=1E-16)
+.MODEL NOX NPN(BF=100,VAF=130,IS=1E-14)
+.MODEL DX D(IS=1E-16)
+.MODEL SLATCH1 VSWITCH(ROFF=1E6,RON=500,VOFF=2.1,VON=1.4)
+.ENDS AD8561
+
+

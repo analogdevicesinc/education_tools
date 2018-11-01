@@ -1,0 +1,259 @@
+SIMetrixFile type=schematic format=1.0 revision=5
+.Component
+.Schematic
+.SymbolLibrary
+.Symbol
+Attributes name="probev_new" description="Probe Voltage" catalog="Connections;Probes" track=1
+Segment x1=60 y1=-60 x2=60 y2=-120
+Segment x1=60 y1=-60 x2=120 y2=-60
+Segment x1=0 y1=0 x2=60 y2=-60
+Pin name="NODE" order=1 x=0 y=0 visible=0
+Property name="PARAMSSCRIPT" value="edit_probe_measure" autopos=0 x=-240 y=840 align=LeftTop protected=1 visible=0 font=Default
+Property name="PARAMS_MENU" value="Edit/Add Measurement..." autopos=0 x=-240 y=780 align=LeftTop protected=1 visible=0 font=Default
+Property name="CLASS" value="PROBE" autopos=0 x=-240 y=480 align=LeftBase protected=1 visible=0 font=Default
+Property name="Label" value="" autopos=1 normal=Right rotated=Right font=Default
+Property name="VALUE" value="" autopos=1 normal=Right rotated=Right font=Default
+Property name="REF" value="Probe?" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Property name="VALUESCRIPT" value="edit_probe" autopos=0 x=-240 y=360 align=LeftBase protected=1 visible=0 font=Default
+Property name="TEMPLATE" value=".GRAPH <node[1]> %VALUE% <ifd:MEASURE_SPEC:userid=%REF%.<block>;.post_process probe_measure %REF%.<block> %MEASURE_SPEC%>" autopos=0 x=-240 y=120 align=LeftBase protected=1 visible=0 font=Default
+Property name="SIMPLIS_TEMPLATE" value=".PRINT V(<probe[1]>);.GRAPH :<probe[1]> %VALUE% <ifd:MEASURE_SPEC:userid=%REF%.<block>;.post_process probe_measure %REF%.<block> %MEASURE_SPEC%>" autopos=0 x=-240 y=240 align=LeftBase protected=1 visible=0 font=Default
+Property name="PROBETYPE" value="V" autopos=0 x=-240 y=600 align=LeftBase protected=1 visible=0 font=Default
+Property name="SIMULATOR" value="DUAL" autopos=0 x=-240 y=720 align=LeftBase protected=1 visible=0 font=Default
+.EndSymbol
+.Symbol
+Attributes name="cap" description="Capacitor" catalog="Passives" track=1
+Segment x1=0 y1=240 x2=0 y2=156
+Segment x1=0 y1=0 x2=0 y2=84
+Segment x1=-84 y1=84 x2=84 y2=84
+Segment x1=-84 y1=156 x2=84 y2=156
+Pin name="P" order=1 x=0 y=0 visible=0
+Pin name="N" order=2 x=0 y=240 visible=0
+Property name="PARAMSSCRIPT" value="params_capacitor" autopos=0 x=0 y=900 align=LeftTop protected=1 visible=0 font=Default
+Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default
+Property name="SIMULATOR" value="DUAL" autopos=1 normal=Left rotated=Left protected=1 visible=0 font=Default
+Property name="REF" value="C?" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="VALUE" value="1n" autopos=1 normal=Right rotated=Top font=Default
+Property name="DECSCRIPT" value="inc_dec_passive 1" autopos=1 normal=Left rotated=Left protected=1 visible=0 font=Default
+Property name="INCSCRIPT" value="inc_dec_passive 0" autopos=1 normal=Left rotated=Left protected=1 visible=0 font=Default
+Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Property name="TEMPLATE" value="<ref> <nodelist> <value> <paramsvalue> %FORM%" autopos=0 x=0 y=360 align=LeftBase protected=1 visible=0 font=Default
+Property name="SIMPLIS_TEMPLATE" value="<ref> <nodelist> %VALUE%" autopos=0 x=0 y=480 align=LeftBase visible=0 font=Default
+Property name="VALUESCRIPT" value="edit_reactive" autopos=0 x=0 y=600 align=LeftBase protected=1 visible=0 font=Default
+Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default
+.EndSymbol
+.Symbol
+Attributes name="vsrc" description="Fixed Voltage Source" catalog="Sources" track=1
+Segment x1=0 y1=360 x2=0 y2=480
+Segment x1=0 y1=156 x2=0 y2=204
+Segment x1=0 y1=0 x2=0 y2=120
+Segment x1=-24 y1=180 x2=24 y2=180
+Arc l=-120 t=120 r=120 b=360 x1=0 y1=360 x2=0 y2=360
+Pin name="P" order=1 x=0 y=0 visible=0
+Pin name="N" order=2 x=0 y=480 visible=0
+Property name="MODEL" value="V" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Property name="VALUE" value="5" autopos=1 normal=Right rotated=Top font=Default
+Property name="REF" value="V?" autopos=1 normal=Right rotated=Bottom font=Default
+.EndSymbol
+.Symbol
+Attributes name="resz" description="Resistor (Z shape)" catalog="Passives" track=1
+Segment x1=-30 y1=210 x2=30 y2=270
+Segment x1=-30 y1=90 x2=30 y2=150
+Segment x1=0 y1=300 x2=0 y2=360
+Segment x1=0 y1=60 x2=-30 y2=90
+Segment x1=0 y1=60 x2=0 y2=0
+Segment x1=30 y1=150 x2=-30 y2=210
+Segment x1=30 y1=270 x2=0 y2=300
+Pin name="N" order=2 x=0 y=360 visible=0
+Pin name="P" order=1 x=0 y=0 visible=0
+Property name="REF" value="R?" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="VALUE" value="1K" autopos=1 normal=Right rotated=Top font=Default
+Property name="DECSCRIPT" value="dec_passive" autopos=1 normal=Left rotated=Left protected=1 visible=0 font=Default
+Property name="INCSCRIPT" value="inc_passive" autopos=1 normal=Left rotated=Left protected=1 visible=0 font=Default
+Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Property name="SIMULATOR" value="DUAL" autopos=1 normal=Left rotated=Left protected=1 visible=0 font=Default
+.EndSymbol
+.Symbol
+Attributes name="gnd" description="Ground" catalog="Connections;Terminals" track=1
+Segment x1=0 y1=0 x2=0 y2=120
+Segment x1=-72 y1=156 x2=72 y2=156
+Segment x1=-24 y1=192 x2=24 y2=192
+Segment x1=-120 y1=120 x2=120 y2=120
+Pin name="GND" order=1 x=0 y=0 visible=0
+Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Property name="VALUE" value="0" autopos=1 normal=Left rotated=Left protected=1 visible=0 font=Default
+.EndSymbol
+.Symbol
+Attributes name="nmos_sub" description="NMOS 3 terminal" catalog="Semiconductors;MOSFETs (Discrete)" track=1
+Segment x1=0 y1=240 x2=72 y2=240
+Segment x1=144 y1=-24 x2=144 y2=24
+Segment x1=144 y1=0 x2=240 y2=0
+Segment x1=144 y1=120 x2=192 y2=144
+Segment x1=144 y1=120 x2=192 y2=96
+Segment x1=144 y1=120 x2=240 y2=120
+Segment x1=144 y1=216 x2=144 y2=264
+Segment x1=144 y1=240 x2=240 y2=240
+Segment x1=144 y1=96 x2=144 y2=144
+Segment x1=240 y1=240 x2=240 y2=120
+Segment x1=72 y1=0 x2=72 y2=240
+Pin name="D" order=1 x=240 y=0 visible=0
+Pin name="G" order=2 x=0 y=240 visible=0
+Pin name="S" order=3 x=240 y=240 visible=0
+Property name="MODEL" value="X" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Property name="VALUE" value="IRF530" autopos=1 normal=Top rotated=Right font=Default
+Property name="REF" value="Q?" autopos=1 normal=Bottom rotated=Right font=Default
+.EndSymbol
+.Symbol
+Attributes name="Free_text" description="Free text" catalog="Sheet/Text" track=1
+Property name="VALUE" value="Text" autopos=0 x=0 y=156 align=LeftBase linear=1 selectable=1 font=FreeText
+Property name="VALUESCRIPT" value="edit_schem_text" autopos=1 normal=Left rotated=Left protected=1 visible=0 font=Default
+.EndSymbol
+.EndSymbolLibrary
+View x=1920 y=360 zoom=8 snapgrid=120
+.Instance
+Attributes type=symbol name="Free_text" selected=0 protected=0 x=2400 y=2880 orient=N0
+Property name="VALUE" value="This example schematic is supplied for informational/educational purposes only." autopos=0 x=0 y=156 align=LeftBase linear=1 selectable=1 font=FreeText
+Netnames
+.EndInstance
+.Instance
+Attributes type=symbol name="probev_new" selected=0 protected=0 x=2160 y=840 orient=N0
+Property name="Label" value="Input" autopos=1 normal=Right rotated=Right font=Default
+Property name="VALUE" value="axisType=\"auto\" persistence=-1 curveLabel=\"Input\" xLog=\"auto\" yLog=\"auto\"  nowarn=true'" autopos=1 normal=Right rotated=Right visible=0 font=Default
+Property name="REF" value="Probe3" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames
+.EndInstance
+.Instance
+Attributes type=symbol name="resz" selected=0 protected=0 x=3600 y=1440 orient=N180
+Property name="REF" value="R5" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="VALUE" value="200k" autopos=1 normal=Right rotated=Top font=Default
+Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="R5_P" pin2="R5_N"
+.EndInstance
+.Instance
+Attributes type=symbol name="resz" selected=0 protected=0 x=3480 y=2640 orient=N180
+Property name="REF" value="R4" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="VALUE" value="22k" autopos=1 normal=Right rotated=Top font=Default
+Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="Q1_S" pin2="R5_P"
+.EndInstance
+.Instance
+Attributes type=symbol name="resz" selected=0 protected=0 x=2760 y=2040 orient=N180
+Property name="REF" value="R3" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="VALUE" value="4.7k" autopos=1 normal=Right rotated=Top font=Default
+Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="0" pin2="R1_P"
+.EndInstance
+.Instance
+Attributes type=symbol name="nmos_sub" selected=0 protected=0 x=3960 y=1920 orient=N0
+Property name="MODEL" value="X" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Property name="VALUE" value="ZVN2110A" autopos=0 x=-8 y=480 align=CentreBase font=Default
+Property name="REF" value="M1" autopos=0 x=120 y=275 align=CentreTop font=Default
+Netnames pin1="R2_N" pin2="R5_P" pin3="Q1_S"
+.EndInstance
+.Instance
+Attributes type=symbol name="gnd" selected=0 protected=0 x=2160 y=2880 orient=N0
+Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="0"
+.EndInstance
+.Instance
+Attributes type=symbol name="vsrc" selected=0 protected=0 x=5880 y=720 orient=N0
+Property name="ref" value="V1" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="value" value="5 " autopos=1 normal=Right rotated=Top font=Default
+Property name="model" value="V" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="R5_N" pin2="0"
+.EndInstance
+.Instance
+Attributes type=symbol name="vsrc" selected=0 protected=0 x=2160 y=2160 orient=N0
+Property name="ref" value="V2" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="value" value=" AC 1 0 Sine(0 1 1k 0 0)" autopos=1 normal=Right rotated=Top font=Default
+Property name="model" value="V" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="V2_P" pin2="0"
+.EndInstance
+.Instance
+Attributes type=symbol name="vsrc" selected=0 protected=0 x=5880 y=2040 orient=N0
+Property name="ref" value="V3" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="value" value="5V" autopos=1 normal=Right rotated=Top font=Default
+Property name="model" value="V" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="0" pin2="Q1_S"
+.EndInstance
+.Instance
+Attributes type=symbol name="probev_new" selected=0 protected=0 x=4680 y=1680 orient=N0
+Property name="Label" value="Amplifier Output" autopos=1 normal=Right rotated=Right font=Default
+Property name="VALUE" value="axisType=\"auto\" persistence=3 curveLabel=\"Amplifier Output\"  nowarn=true" autopos=1 normal=Right rotated=Right visible=0 font=Default
+Property name="REF" value="Probe1" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="R2_N"
+.EndInstance
+.Instance
+Attributes type=symbol name="resz" selected=0 protected=0 x=2760 y=1320 orient=N180
+Property name="REF" value="R1" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="VALUE" value="200k" autopos=1 normal=Right rotated=Top font=Default
+Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="R1_P" pin2="V2_P"
+.EndInstance
+.Instance
+Attributes type=symbol name="resz" selected=0 protected=0 x=4200 y=720 orient=N0
+Property name="REF" value="R2" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="VALUE" value="10k" autopos=1 normal=Right rotated=Top font=Default
+Property name="MODEL" value="R" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="R5_N" pin2="R2_N"
+.EndInstance
+.Instance
+Attributes type=symbol name="gnd" selected=0 protected=0 x=6240 y=1800 orient=N0
+Property name="netname" value="" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames pin1="0"
+.EndInstance
+.Instance
+Attributes type=symbol name="cap" selected=0 protected=0 x=3000 y=1680 orient=N0
+Property name="ICANAL" value="0;1;0;0;" autopos=0 x=0 y=660 align=LeftTop visible=0 font=Default
+Property name="REF" value="C1" autopos=1 normal=Right rotated=Bottom font=Default
+Property name="VALUE" value="4.7u" autopos=1 normal=Right rotated=Top font=Default
+Property name="MODEL" value="C" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Property name="SIMPLIS_TEMPLATE" value="<ref> <nodelist> %VALUE%" autopos=0 x=0 y=480 align=LeftBase visible=0 font=Default
+Property name="INIT_SCRIPT" value="ic_reactive" autopos=0 x=0 y=840 align=LeftBase visible=0 font=Default
+Netnames pin1="R1_P" pin2="R5_P"
+.EndInstance
+.Instance
+Attributes type=symbol name="probev_new" selected=0 protected=0 x=3600 y=2160 orient=N0
+Property name="Label" value="M1-G" autopos=1 normal=Right rotated=Right font=Default
+Property name="VALUE" value="axisType=\"auto\" persistence=-1 curveLabel=\"M1-G\" xLog=\"auto\" yLog=\"auto\"  nowarn=true'" autopos=1 normal=Right rotated=Right visible=0 font=Default
+Property name="REF" value="Probe2" autopos=1 normal=Left rotated=Left visible=0 font=Default
+Netnames
+.EndInstance
+Wire x1=3000 y1=1920 x2=3000 y2=2160 net="" branch=""
+Wire x1=3000 y1=1680 x2=3000 y2=1440 net="" branch=""
+Wire x1=4200 y1=2760 x2=3480 y2=2760 net="Q1_S" branch="-:R4#P"
+Wire x1=3000 y1=2160 x2=3480 y2=2160 net="R5_P" branch="-:C1#N"
+Wire x1=3480 y1=2280 x2=3480 y2=2160 net="R5_P" branch="+:R4#N"
+Wire x1=4200 y1=600 x2=3600 y2=600 net="R5_N" branch="+:V1#P+:R2#P"
+Wire x1=4200 y1=2160 x2=4200 y2=2760 net="Q1_S" branch="-:Q1#S"
+Wire x1=5880 y1=2760 x2=5880 y2=2520 net="Q1_S" branch="-:V3#N"
+Wire x1=4200 y1=2760 x2=5880 y2=2760 net="Q1_S" branch="+:V3#N"
+Wire x1=6240 y1=1800 x2=6240 y2=1680 net="0" branch="-:V1#N-:V3#P"
+Wire x1=4200 y1=600 x2=5880 y2=600 net="R5_N" branch="+:V1#P"
+Wire x1=4200 y1=720 x2=4200 y2=600 net="R5_N" branch="+:R2#P"
+Wire x1=5880 y1=720 x2=5880 y2=600 net="R5_N" branch="+:V1#P"
+Wire x1=4200 y1=1680 x2=4200 y2=1920 net="R2_N" branch="+:Q1#D"
+Wire x1=4200 y1=1680 x2=4200 y2=1080 net="R2_N" branch="-:R2#N"
+Wire x1=5880 y1=1680 x2=5880 y2=1200 net="0" branch="-:V1#N"
+Wire x1=5880 y1=1680 x2=6240 y2=1680 net="0" branch="-:V1#N-:V3#P"
+Wire x1=5880 y1=2040 x2=5880 y2=1680 net="0" branch="+:V3#P"
+Wire x1=3600 y1=2160 x2=3960 y2=2160 net="R5_P" branch="+:Q1#G"
+Wire x1=3600 y1=1080 x2=3600 y2=600 net="R5_N" branch="+:R5#N"
+Wire x1=3600 y1=1440 x2=3600 y2=2160 net="R5_P" branch="-:R5#P"
+Wire x1=3480 y1=2160 x2=3600 y2=2160 net="R5_P" branch="-:C1#N-:R4#N"
+Wire x1=3480 y1=2640 x2=3480 y2=2760 net="Q1_S" branch="-:R4#P"
+Wire x1=4680 y1=1680 x2=4200 y2=1680 net="R2_N" branch="-:R2#N-:Q1#D"
+Wire x1=2760 y1=840 x2=2160 y2=840 net="" branch=""
+Wire x1=2760 y1=1440 x2=3000 y2=1440 net="" branch=""
+Wire x1=2160 y1=2760 x2=2160 y2=2640 net="" branch=""
+Wire x1=2760 y1=840 x2=2760 y2=960 net="" branch=""
+Wire x1=2160 y1=2760 x2=2760 y2=2760 net="" branch=""
+Wire x1=2760 y1=1320 x2=2760 y2=1440 net="" branch=""
+Wire x1=2160 y1=2160 x2=2160 y2=840 net="" branch=""
+Wire x1=2160 y1=2880 x2=2160 y2=2760 net="" branch=""
+Wire x1=2760 y1=1680 x2=2760 y2=1440 net="" branch=""
+Wire x1=2760 y1=2040 x2=2760 y2=2760 net="" branch=""
+Text value=".SIMULATOR SIMETRIX\n.TRAN 5m\n*.AC DEC 25 1k 100Meg\n.OPTIONS reltol=5u\n+  tnom=27\n\n.model Q2N2222 npn ( IS=2.48E-13 VAF=73.9 BF=400 IKF=0.1962 NE=1.2069\n+    ISE=3.696E-14 IKR=0.02 ISC=5.00E-09 NC=2 NR=1 BR=5 RC=0.3 CJC=7.00E-12\n+    FC=0.5 MJC=0.5 VJC=0.5 CJE=1.80E-11 MJE=0.5 VJE=1 TF=4.00E-10\n+    ITF=2 VTF=10 XTF=10 RE=0.4 TR=4.00E-08)\n* 2N2222 with less gain\n.model Q2N2222 npn.tol IS=5\n.SIMULATOR DEFAULT\n"
+SimulatorMode value="SIMetrix"
+LicenseInfo version="7.10m" feats=Basic|AD|Micron|Mcore2|Schematic|Advanced|Sim|Demo|Rtn|SIMPLIS_IF|beta serial= user="" code=
+.EndSchematic
+.EndComponent

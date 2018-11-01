@@ -1,0 +1,118 @@
+* ADG8210 MACROMODEL
+* Description: Amplifier
+* Generic Desc: XF65, CSAmp, G=20, BiDir, HiBW
+* Developed by: Y.WONG 
+* Revision History: 08/10/2012 - Updated to new header style
+* 3.0 (11/2008)
+* Copyright 2012 by Analog Devices, Inc.
+*
+* Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement. Use of this model 
+* indicates your acceptance of the terms and provisions in the License Statement.
+*
+* BEGIN Notes:
+*
+* Not Modeled:
+*    
+* Parameters modeled include: 
+*
+* END Notes
+*
+* Connections
+*      1  = -IN
+*      2  = GND
+*      3  = VREF2
+*      4  = NC 
+*      5  = OUT
+*      6  = V+
+*      7  = VREF1
+*      8  = +IN
+*
+*****************
+.SUBCKT AD8210 1 2 3 5 6 7 8
+
+*INPUT STAGE
+R7 1 99 2k
+R8 8 91 2k
+RCM1 99 10 800
+RCM2 10 91 800
+RCM3 99 100 1000Meg
+RCM4 100 91 1000Meg
+D1 6 10 DY
+E1 12 0 10 0 1
+IBIAS 10 6 230u
+EGAIN1 9 0 99 0 3.5
+EGAIN2 11 0 91 0 3.5
+RC1 12 13 10Meg
+RC2 12 14 10Meg
+C1 13 14 1p
+Q1 13 9 15 QX
+Q2 14 18 16 QX
+RE1 15 17 4.83Meg
+RE2 16 17 4.83Meg
+I1 17 2 10n
+VOS 18 98 0.1m
+EOS 98 11 POLY(1) 20 21 0 1
+
+*GAIN STAGE/FREQUENCY SHAPE
+*FIRST POLE AT 475kHz
+GP 0 22 13 0 7.67e-4
+RP 0 22 1303
+CP 0 22 257p
+GN 0 23 14 0 7.67e-4
+RN 0 23 1303
+CN 0 23 257p
+
+*SECOND POLE AT 3MHz
+GGAIN 21 24 23 22 20
+RGAIN 21 24 1
+CGAIN 21 24 53052p
+
+*VOLTAGE REFERENCE
+DREF1P 7 6 DZ
+DREF1N 2 7 DZ
+DREF2P 3 6 DZ
+DREF2N 2 3 DZ
+RREF1 7 4 32k
+RREF2 4 3 32k
+EVREF 21 0 4 0 1
+
+*CMRR
+GCM 21 20 21 100 5.5e-14
+LCM 21 25 159H
+RCM 25 20 1e6
+
+*Supply Current
+RLOAD 6 2 3.5k
+*PSRR
+
+*OUTPUT STAGE
+GOUT 0 28 24 0 1
+RO2 28 0 1
+D3 28 26 DX1
+D4 26 28 DX2
+RC 26 0 2.5E-3
+GC 0 26 5 0 400
+ROUT 28 5 2
+DP 5 29 DZ
+DN 30 5 DZ
+VP 6 29 0.8
+VN 30 2 0.82
+
+*SUPPLY CURRENT CORRECTION
+D5 6 31 DZ
+D6 32 2 DZ
+D7 0 31 DZENER
+D8 32 0 DZENER
+G1 31 0 28 5 0.5 
+G2 0 32 28 5 -0.5
+
+.MODEL DX1 D(IS=4E-17, n = 0.01)
+.MODEL DX2 D(IS=1E-25, n = 0.01)
+.MODEL DY D(IS=1E-21)
+.MODEL DZ D(IS=1E-15)
+.MODEL DZENER D(IS=1E-15 BV=50)
+.MODEL QX NPN(BF=50000)
+.ENDS
+
+
+
