@@ -61,7 +61,7 @@ except:
 
 try:
     import matplotlib.pyplot as plt
-    from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+    from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 except:
     print("Please install matplotlib")
 
@@ -748,7 +748,7 @@ def gui():
     canvas.draw()
     root.update_idletasks()
 
-    toolbar = NavigationToolbar2TkAgg(canvas, toolbarFrame)
+    toolbar = NavigationToolbar2Tk(canvas, toolbarFrame)
     toolbar.update()
     
     root.mainloop()
