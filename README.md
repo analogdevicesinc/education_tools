@@ -8,7 +8,7 @@ Most of the files are linked as archives to the activities available on [Analog 
 - ADALM2000: [ADALM2000 Based Lab Activity Material, Electronics I and II](https://wiki.analog.com/university/courses/electronics/labs)
 - ADALM-PLUTO:
   - Libraries used: 
-    - [libiio](https://www.github.com/analogdevicesinc/libiio) + Python [bindings](https://github.com/analogdevicesinc/libiio/tree/master/bindings/python) 
+    - [libiio](https://www.github.com/analogdevicesinc/libiio) + [Python bindings](https://github.com/analogdevicesinc/libiio/tree/master/bindings/python) 
     - [pyadi-iio](https://github.com/analogdevicesinc/pyadi-iio)
   - Applications:
     - basic examples
