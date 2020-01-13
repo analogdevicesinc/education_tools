@@ -1,4 +1,6 @@
-# Education Content
+# ADI Educational Content
+
+[Analog Devices Inc.](https://www.analog.com/en/index.html)
 
 Resource files for applications/examples with Active Learning Modules ADALM1000, ADALM2000, ADALM-PLUTO.
 
