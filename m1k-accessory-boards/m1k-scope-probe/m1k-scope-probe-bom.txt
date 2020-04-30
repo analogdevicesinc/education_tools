@@ -1,0 +1,14 @@
+Partlist exported from m1k-scope-probe.sch at 4/23/2020 8:50 AM
+
+Part    Value   Device          Package      Description                          MF MPN 
+ALM1000         PINHD-1X8       1X08         8 PIN Single row HEADER                                                      
+ANALOG2         PINHD-1X8       1X08         6 PIN Single row HEADER                                                      
+C1      0.1u    C-US050-024X044 C050-024X044 CAPACITOR                                      
+C2      0.1u    C-US050-024X044 C050-024X044 CAPACITOR                                      
+CHA             227161-8        AMP_227161   JACK,  RIGHT ANGLE, 50 OHM, PCB, BNC          
+CHB             227161-8        AMP_227161   JACK,  RIGHT ANGLE, 50 OHM, PCB, BNC          
+JP1             JP2E            JP2          3 pin JUMPER                                                          
+JP2             JP2E            JP2          3 pin JUMPER                                                          
+R1      Various R-US_0204/7     0204/7       RESISTOR                                       
+R2      Various R-US_0204/7     0204/7       RESISTOR                                       
+                                               

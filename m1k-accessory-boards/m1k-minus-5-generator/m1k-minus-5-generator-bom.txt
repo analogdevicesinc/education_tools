@@ -1,0 +1,15 @@
+Partlist exported from m1k-minus-5-generator.sch at 4/23/2020 8:37 AM
+
+Part    Value     Device               Package Description                          
+ALM1000           PINHD-1X8            1X08    PIN HEADER                           
+ANALOG2           PINHD-1X8            1X08    PIN HEADER                           
+C1      10u       CPOL-USE2,5-6E       E2,5-6E POLARIZED CAPACITOR, American symbol 
+C2      10u       CPOL-USE2,5-6E       E2,5-6E POLARIZED CAPACITOR, American symbol 
+C3      10u       CPOL-USE2,5-6E       E2,5-6E POLARIZED CAPACITOR, American symbol 
+C4      10u       CPOL-USE2,5-6E       E2,5-6E POLARIZED CAPACITOR, American symbol 
+D1                SCHOTTKY-DIODEDO35-7 DO35-7  Schottky Diode  
+D2                SCHOTTKY-DIODEDO35-7 DO35-7  Schottky Diode  
+U1      ADM660    ADM660               SO8     CMOS Switched-Capacitor Voltage Converter 
+U1      LT1054    LT1054               SO8     Switched-Capacitor Voltage Converter with Regulator
+U2      ADM660DIP ADM660DIP            DIL8    CMOS Switched-Capacitor Voltage Converter 
+U2      LT1054DIP LT1054DIP            DIL8    Switched-Capacitor Voltage Converter with Regulator
