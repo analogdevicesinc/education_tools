@@ -1,0 +1,9 @@
+Partlist at 5/20/2020 8:09 AM
+
+Part Value Device       Package Description               
+JP1        PINHD-1X8    1X08    PIN HEADER                
+JP2        PINHD-1X4    1X04    PIN HEADER                
+JP3        JP2E         JP2     JUMPER                    
+JP4        JP2E         JP2     JUMPER                    
+R1         R-US_0207/10 0207/10 RESISTOR, American symbol 
+U1         AD8210       SO8     Current sense monitor     
