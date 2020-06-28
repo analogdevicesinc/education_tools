@@ -14,9 +14,15 @@ The idea is that the M1K analog input path is bare bones simple (for cost saving
 
 - Applications:
   - Analog Input Multiplexer using CD4052 dual 4:1
-  - Input Buffer amplifier using dual op-ampa such as AD822 and AD8542
+  - Input Buffer amplifier using dual op-amp footprint such as AD822 and AD8542
+  - Input Buffer amplifier using single op-amp footprints
   - Input resistor voltage divider
+  - Floating Amp meter / Milli-ohm meter
   - BNC / Scope probe adapter
   - +/- 5 V supply generator
     - Notice that the M1K connector has two ground pins. The -5 generator hijacks one of these pins for its -5 V rail. On all the accessory boards these two "ground" pins are never shorted together. If a given board (other than the -5 generator) is plugged into the M1K directly, the two pins will be connected together inside the M1K.
-
+  - AWG quad op-amp buffer
+  - Second order active filter
+  - Test point extender board
+  - Right angle extender board
+  - Dip Switch extender board
