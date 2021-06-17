@@ -78,24 +78,24 @@ def fold_spectrum(unfolded_spectrum, points_per_zone, num_zones):
 # Function to integrate a power-spectral-density
 # The last element represents the total integrated noise
 def integrate_psd(psd, bw):
-    integral_of_psd_squared = np.zeros(len(psd))
+    integ_of_psd_squared = np.zeros(len(psd))
     integrated_psd = np.zeros(len(psd))
-    integral_of_psd_squared[0] = psd[0]**2.0
+    integ_of_psd_squared[0] = psd[0]**2.0
 
     for i in range(1, len(psd)):
-        integral_of_psd_squared[i] += integral_of_psd_squared[i-1] + psd[i-1] ** 2
-        integrated_psd[i] += integral_of_psd_squared[i]**0.5
+        integ_of_psd_squared[i] += integ_of_psd_squared[i-1] + psd[i-1] ** 2
+        integrated_psd[i] += integ_of_psd_squared[i]**0.5
     integrated_psd *= bw**0.5
     return integrated_psd
 
 # Equivalent noise bandwidth of an arbitrary filter, given
 # frequency response magnitude and bandwidth per point
 def arb_enbw(fresp, bw):
-    integral_of_fresp_sqared = np.zeros(len(fresp))
-    integral_of_fresp_sqared[0] = fresp[0]**2.0
+    integ_of_fresp_sq = np.zeros(len(fresp))
+    integ_of_fresp_sq[0] = fresp[0]**2.0
     for i in range(1, len(fresp)):
-        integral_of_fresp_sqared[i] += integral_of_fresp_sqared[i-1] + fresp[i-1] ** 2
-    return integral_of_fresp_sqared[len(integral_of_fresp_sqared)-1]*bw
+        integ_of_fresp_sq[i] += integ_of_fresp_sq[i-1] + fresp[i-1] ** 2
+    return integ_of_fresp_sq[len(integ_of_fresp_sq)-1]*bw
 
 # Equivalent noise bandwidth of a FIR filter from filter taps
 # Bandwidth implied by sample rate
@@ -143,13 +143,15 @@ def downsample(data, downsample_factor):
 # Output length is 2x input length
 def time_points_from_freq(freq, fs=1, density=False): #DC at element zero,
     N=len(freq)
-    randomphase_pos = np.ones(N-1, dtype=np.complex)*np.exp(1j*np.random.uniform(0.0, 2.0*np.pi, N-1))
-    randomphase_neg = np.flip(np.conjugate(randomphase_pos))
-    randomphase_full = np.concatenate(([1],randomphase_pos,[1], randomphase_neg))
+    rnd_ph_pos = (np.ones(N-1, dtype=np.complex)*
+                  np.exp(1j*np.random.uniform(0.0, 2.0*np.pi, N-1)))
+    rnd_ph_neg = np.flip(np.conjugate(rnd_ph_pos))
+    rnd_ph_full = np.concatenate(([1],rnd_ph_pos,[1], rnd_ph_neg))
     r_spectrum_full = np.concatenate((freq, np.roll(np.flip(freq), 1)))
-    r_spectrum_randomphase = r_spectrum_full * randomphase_full
-    r_time_full = np.fft.ifft(r_spectrum_randomphase)
-#    print("RMS imaginary component: ", np.std(np.imag(r_time_full)), " Should be close to nothing")
+    r_spectrum_rnd_ph = r_spectrum_full * rnd_ph_full
+    r_time_full = np.fft.ifft(r_spectrum_rnd_ph)
+#    print("RMS imaginary component: ", np.std(np.imag(r_time_full)),
+#          " Should be close to nothing")
     if (density == True):
         r_time_full *= N*np.sqrt(fs/(N)) #Note that this N is "predivided" by 2
     return(np.real(r_time_full))

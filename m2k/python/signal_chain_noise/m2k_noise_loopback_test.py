@@ -65,12 +65,14 @@ aout.setSampleRate(1, 75000)
 aout.enableChannel(0, True)
 aout.enableChannel(1, True)
 
-n = 8192
+n = 65536
 x=np.linspace(-np.pi,np.pi,n)
 #buffer1=np.linspace(-2.0,2.00,n)
 buffer1 = np.sin(x)
 
-#create some "bands" of noise
+# Create some "bands" of noise. Each point represents fs/n Hz,
+# or about 1.144Hz for a 2**16 data record at 75ksps.
+# Each band of 4096 points is about 4.687kHz wide.
 bands = np.concatenate((np.ones(n//16),np.zeros(n//16),
                         np.ones(n//16), np.zeros(n//16),
                         np.ones(n//16),np.zeros(n//16),
