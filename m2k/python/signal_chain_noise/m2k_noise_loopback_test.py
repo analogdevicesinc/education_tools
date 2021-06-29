@@ -32,6 +32,7 @@ import libm2k
 import matplotlib.pyplot as plt
 import time
 import numpy as np
+from scipy.signal import periodogram
 import signal_chain_functions as scf
 
 ctx=libm2k.m2kOpen("ip:192.168.2.1") # Explicitly call out default IP address
@@ -50,8 +51,8 @@ trig=ain.getTrigger()
 ain.enableChannel(0,True)
 ain.enableChannel(1,True)
 ain.setSampleRate(1000000)
-ain.setRange(0,-10,10)
-ain.setRange(1,-10,10)
+ain.setRange(0,-2,2)
+ain.setRange(1,-2,2)
 
 ### uncomment the following block to enable triggering
 #trig.setAnalogSource(0) # Channel 0 as source
@@ -83,25 +84,36 @@ buffer = [buffer1, buffer2]
 
 aout.setCyclic(True)
 aout.push(buffer)
-
-for i in range(1): # gets n triggered samples then quits
-    ns = 32768
+navgs = 32 # Avg. 32 periodograms to smooth out data
+ns = 2**16
+vsd=np.zeros(ns//2+1) # /2 for one sided
+for i in range(navgs):
     data = ain.getSamples(ns)
-    plt.figure(1)
-    plt.plot(data[0])
-    plt.plot(data[1])
-    plt.show()
-    plt.figure(1)
-    my_window = np.blackman(ns)
-    my_window /= np.sum(my_window) # Normalize to unity gain
+    ch1=np.asarray(data[0]) # Extract channel 1 data
+    ch1 -= np.average(ch1) # Remove DC
+    fs, psd = periodogram(ch1, 1000000,
+                          window="blackman",
+                          return_onesided=True)
+    vsd += np.sqrt(psd)
+vsd /= navgs
 
-    win_data = data[0]-np.average(data[0]) # remove DC
-    win_data = win_data*my_window # Window
-    spectrum=20*np.log10(np.abs(np.fft.fft(win_data)))
+plt.figure(1)
+plt.subplot(211)
+plt.title("Time Domain")
+plt.plot(data[0])
+plt.xlabel("Point")
+plt.ylabel("Volts")
+#plt.plot(data[1])
+plt.show()
 
-    plt.plot(spectrum)
-    plt.show()
-    time.sleep(0.1)
+plt.subplot(212)
+plt.title("Spectral Density")
+plt.plot(fs, vsd)
+plt.xlabel("Frequency (Hz)")
+plt.ylabel("NSD (V/rootHz)")
+plt.tight_layout()
+plt.show()
+time.sleep(0.1)
 
 time.sleep(1)
 print ("Pausing with noise output still running:")
