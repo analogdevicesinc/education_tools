@@ -63,11 +63,13 @@ my_ad7124._ctx.set_timeout(100000)
 n=1 # number of buffers
 
 for i in range(n):
-    data = my_ad7124.rx()
+    data = np.asarray(my_ad7124.rx())*1000000.0
     plt.plot(data)
-    plt.title('AD7124, G=1, 128sps')
-    plt.ylabel('Volts')
-    plt.xlabel("Sample Number")
+    plt.title('AD7124, G=1, 128sps', fontsize=28)
+    plt.ylabel('Microvolts', fontsize=28)
+    plt.xlabel("Sample Number", fontsize=28)
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=20)
     plt.show()
 
 del my_ad7124 # Clean up

@@ -149,7 +149,7 @@ def time_points_from_freq(freq, fs=1, density=False): #DC at element zero,
     rnd_ph_full = np.concatenate(([1],rnd_ph_pos,[1], rnd_ph_neg))
     r_spectrum_full = np.concatenate((freq, np.roll(np.flip(freq), 1)))
     r_spectrum_rnd_ph = r_spectrum_full * rnd_ph_full
-    r_time_full = np.fft.ifft(r_spectrum_rnd_ph)
+    r_time_full = np.fft.ifft(r_spectrum_rnd_ph) # This line does the "real work"
 #    print("RMS imaginary component: ", np.std(np.imag(r_time_full)),
 #          " Should be close to nothing")
     if (density == True):
