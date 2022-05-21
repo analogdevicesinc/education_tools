@@ -119,7 +119,8 @@ def setup_m2k(m2k_backend = None):
     context.calibrateADC()
     context.calibrateDAC()
     siggen = context.getAnalogOut()
-    input(" M2K Connected. Calibration done. \n  Press any key to start. \n")
+    print(" M2K Connected. Calibration done. \n  Starting test. \n")
+    sleep(1.0)
     return context, siggen
 
 
@@ -149,9 +150,9 @@ def setup_ad7124(my_ip):
     ad7124.channel[ad_channel].scale = sc[-1]  # get highest range
     ad7124.rx_output_type = "SI"
 
-    ad7124.sample_rate = 128  # sets sample rate for all channels
+    ad7124.sample_rate = 64  # sets sample rate for all channels
     ad7124.rx_enabled_channels = [ad_channel]
-    ad7124.rx_buffer_size = 1024  # sets buffer size
+    ad7124.rx_buffer_size = 512  # sets buffer size
     ad7124._ctx.set_timeout(1000000)
     print("ADC Set up. Gathering data ...")
     return ad7124
@@ -166,7 +167,7 @@ def capture_data(ad7124):  # Let's move the plotting out of this routine
 
 # Set a default ip address if none given as a command line argument
 # hardcoded_ip = "ip:192.168.0.235" # Example if you want to hardcode a different address
-hardcoded_ip = "ip:localhost" # Default to localhost if no argument given
+hardcoded_ip = "ip:analog.local" # Default to analog.local if no argument given
 my_ip = sys.argv[1] if len(sys.argv) >= 2 else hardcoded_ip
 
 plt_time_domain = True  # Super useful for debugging, but time domain plot gets messy if you
@@ -179,34 +180,41 @@ response = []
 
 if plt_time_domain:
     plt.figure(1)
+    plt.ion()
     plt.title('AD7124, G=1, 128sps')
     plt.ylabel('Volts')
     plt.xlabel("Sample Number")
 
-freqs = np.linspace(1, 20, 10, endpoint=True)
+freqs = np.linspace(1, 121, 100, endpoint=True)
+
 
 for freq in freqs:
     print("testing ", freq, " Hz")
     send_sinewave(my_siggen, freq)
-    sleep(5.0)
+    sleep(1.0)
+    capture_data(my_ad7124) # Flush?
     data = capture_data(my_ad7124)
-    response.append(np.std(data))  # Take RMS value of captured data
+    resp=np.std(data)
+    print("response: ", resp)
+    response.append(resp)  # Take RMS value of captured data
     if plt_time_domain:
         plt.plot(data)
         plt.show()
-    capture_data(my_ad7124)  # Experiment - do we need to flush?? Was seeing some weird artifacts.
+
 
 print("\n Response \n")
 print(response)
 
-response_dB = 20.0 * np.log10(response/np.sqrt(2))
+response_dB = 20.0 * np.log10(response/(0.5*np.sqrt(2)))
 print("\n Response [dB] \n")
 print(response_dB)
 plt.figure(2)
 plt.plot(freqs, response_dB)
-plt.title('AD7124 filter response')
-plt.ylabel('attenuation')
-plt.xlabel("frequency")
+plt.title('AD7124 SINC4, 64sps filter measured response', fontsize=28)
+plt.ylabel('Attenuation (dB)', fontsize=28)
+plt.xlabel("Frequency (Hz)", fontsize=28)
+plt.xticks(fontsize=20)
+plt.yticks(fontsize=20)
 plt.show()
 m2k_close(ctx, my_siggen)
 del my_ad7124

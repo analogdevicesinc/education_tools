@@ -41,7 +41,7 @@
 import adi
 # my_ad7124 = adi.ad7124(uri="ip:192.168.86.43") # Connect to AD7124
                                                  # (on remote Pi, replace ip address accordingly)
-my_ad7124 = adi.ad7124(uri="ip:localhost") # Connect to AD7124 (locally, through iiod)
+my_ad7124 = adi.ad7124(uri="ip:analog.local") # Connect to AD7124 (locally, through iiod)
 ad_channel = 0 # Set channel
 my_ad7124.channel[ad_channel].scale = 0.0002983 # Set PGA gain
 my_ad7124.sample_rate = 128  # Set sample rate
