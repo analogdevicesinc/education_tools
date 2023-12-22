@@ -1,0 +1,57 @@
+
+
+
+Header 8 Position 2.54mm Solder Right Angle Thru-Hole
+ Mouser #: 855-M20-9750846 
+
+8 Position 2.54 mm 1 Row Right Angle Through Hole Socket (Female) Header
+ Mouser #:437-8018300820001101 
+ Mouser #:437-8018700820002101 
+
+Jameco Electronics https://www.jameco.com/webapp/wcs/stores/servlet/StoreCatalogDisplay?langId=-1&storeId=10001&catalogId=10001
+
+Connector Unshrouded Header 36 Position 2.54mm Solder Right Angle Thru-Hole
+Part no.: 103271
+
+1x8 Position 0.1" Pitch Female Header Receptacle
+Part no.: 70755
+
+1x8 Position Pass-Through Style Header for Arduino Shields
+Part no.: 2144631
+
+IC CD4052 DUAL 4-CHANNEL ANALOG MULTIPLEXER
+Part no.: 13119
+
+IC 74HC4052 Dual 4-Channel Analog Multiplexer/Demultiplexer
+Jameco Part no.: 2287407
+
+All Electronics https://www.allelectronics.com/
+
+
+8-PIN RIGHT-ANGLE HEADER, 0.1" SPACING
+CAT# SHR-8
+1 x 8 right-angle male header. Snappable. Gold flashed pins, 0.1" spacing (2.54mm).
+
+HEADER, 1 X 40 RIGHT ANGLE
+CAT# SHR-40
+1 x 40 right-angle male header. 0.1" spacing.
+
+36-PIN RIGHT-ANGLE HEADER, 0.1" SPACING
+CAT# SHR-36
+1 x 36 right-angle male header. Snappable. Gold flashed pins, 0.1" spacing (2.54mm).
+
+JUMPER FOR 0.1" HEADERS
+CAT# SJ-1
+Designed for use with double and single row headers. Used to short out adjoining posts on headers.
+
+8-PIN Arduino STACKABLE HEADER, 0.1"
+CAT# HDR-08
+8 pin header, 0.1" lead spacing
+
+10-PIN HEADER, 0.1" SPACING
+CAT# HDR-10S
+10 pin header with 4mm (0.15") leads. 0.1" lead spacing
+
+SNAPPABLE BREADBOARD
+CAT # SBB-4
+Solderable, double-sided breadboard that can be used as a single proto board or snapped into four smaller boards for tiny projects. 2-hole strips and 4-hole strip areas. Four power rails. Centerline pads. High-quality FR4 glass epoxy PCB. Lead-free. Anti-tarnish coating. 0.042" holes drilled on 0.1" centers. Size: 2.5" x 3.8" (63.5 x 96.5mm). 
