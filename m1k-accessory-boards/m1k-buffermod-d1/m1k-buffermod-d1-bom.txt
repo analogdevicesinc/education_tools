@@ -1,0 +1,12 @@
+Partlist exported from m1k-buffermod-d1.sch at 4/23/2020 8:39 AM
+
+Part    Value   Device          Package      Description                                            MF                 MPN
+ALM1000         PINHD-1X8       1X08         PIN HEADER                                                                                                   
+ANALOG2         PINHD-1X8       1X08         PIN HEADER                                                                                                   
+C1      Various C-US050-024X044 C050-024X044 CAPACITOR                                                                                   
+C2      Various C-US050-024X044 C050-024X044 CAPACITOR                                                                                   
+IC1     AD8542R AD8542R         SO8          General-Purpose CMOS Rail-to-Rail Amplifiers           Analog Devices AD8542ARZ  
+IC2     AD822N  AD822N          DIL08        Single-Supply, Rail-to-Rail Low Power FET-Input Op Amp                           
+R1      Various R-US_0204/7     0204/7       RESISTOR                                                                                    
+R2      Various R-US_0204/7     0204/7       RESISTOR                                                                                    
+                                                                                            

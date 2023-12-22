@@ -1,0 +1,9 @@
+Partlist exported from m1k_analog_mux-4052.sch at 4/23/2020 8:47 AM
+
+Part    Value   Device      Package Description                       
+ALM1000         PINHD-1X8   1X08    PIN HEADER                        
+ANALOG2         PINHD-1X8   1X08    PIN HEADER                        
+CTRL            PINHD-1X3   1X03    PIN HEADER                        
+IC1     CD4052N CD4052N     DIL16   Dual 4-channel ANALOG MULTIPLEXER 
+MUXIN           PINHD-1X8   1X08    PIN HEADER                        
+                 

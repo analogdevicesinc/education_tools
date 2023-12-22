@@ -1,0 +1,14 @@
+Partlist exported from m1k-input-divider.sch at 4/23/2020 8:45 AM
+
+Part    Value   Device          Package      Description                
+ALM1000         PINHD-1X8       1X08         PIN HEADER                 
+ANALOG2         PINHD-1X8       1X08         PIN HEADER                 
+C1      Various C-US050-024X044 C050-024X044 CAPACITOR 
+C2      Various C-US050-024X044 C050-024X044 CAPACITOR 
+C3      Various C-US050-024X044 C050-024X044 CAPACITOR 
+C4      Various C-US050-024X044 C050-024X044 CAPACITOR 
+R1      Various R-US_0204/7     0204/7       RESISTOR  
+R2      Various R-US_0204/7     0204/7       RESISTOR  
+R3      Various R-US_0204/7     0204/7       RESISTOR  
+R4      Various R-US_0204/7     0204/7       RESISTOR  
+

@@ -1,0 +1,23 @@
+Partlist exported from C:/Users/merce/Documents/eagle/M1k Final/m1k-buffermod-s2.sch at 5/2/2020 10:59 AM
+
+Part    Value   Device          Package      Description                                 MF MPN       OC_FARNELL OC_NEWARK
+ALM1000         PINHD-1X8       1X08         PIN HEADER                                                                   
+ANALOG2         PINHD-1X8       1X08         PIN HEADER                                                                   
+C1              C-US050-024X044 C050-024X044 CAPACITOR, American symbol                                                   
+C2              C-US050-024X044 C050-024X044 CAPACITOR, American symbol                                                   
+IC1     AD8041N AD8041N         DIL08        160 MHz Rail-to-Rail Amplifier with Disable    AD8041ANZ 1438577    15P0923  
+IC2     AD8041N AD8041N         DIL08        160 MHz Rail-to-Rail Amplifier with Disable    AD8041ANZ 1438577    15P0923  
+R1              R-US_0204/7     0204/7       RESISTOR, American symbol                                                    
+R2              R-US_0204/7     0204/7       RESISTOR, American symbol                                                    
+R3              R-US_0204/7     0204/7       RESISTOR, American symbol                                                    
+R4              R-US_0204/7     0204/7       RESISTOR, American symbol                                                    
+R5              R-US_0204/7     0204/7       RESISTOR, American symbol                                                    
+R6              R-US_0204/7     0204/7       RESISTOR, American symbol                                                    
+R7              R-US_0204/7     0204/7       RESISTOR, American symbol                                                    
+R8              R-US_0204/7     0204/7       RESISTOR, American symbol                                                    
+SJ1             SJ              SJ           SMD solder JUMPER                                                            
+SJ2             SJ              SJ           SMD solder JUMPER                                                            
+SJ3             SJ2W            SJ_2         SMD solder JUMPER                                                            
+SJ4             SJ2W            SJ_2         SMD solder JUMPER                                                            
+SJ5             SJ2W            SJ_2         SMD solder JUMPER                                                            
+SJ6             SJ2W            SJ_2         SMD solder JUMPER                                                            
