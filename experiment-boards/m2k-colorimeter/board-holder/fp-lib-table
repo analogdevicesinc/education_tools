@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "M2k_colorimeter")(type "KiCad")(uri "../kicad-lib/footprints/M2k_colorimeter.pretty")(options "")(descr ""))
+)
