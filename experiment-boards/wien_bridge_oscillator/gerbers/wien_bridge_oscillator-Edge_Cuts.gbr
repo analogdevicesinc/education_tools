@@ -1,0 +1,23 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,8.0.4*%
+%TF.CreationDate,2025-02-12T17:53:25-08:00*%
+%TF.ProjectId,wien_bridge_oscillator,7769656e-5f62-4726-9964-67655f6f7363,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Profile,NP*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 8.0.4) date 2025-02-12 17:53:25*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,Profile*%
+%ADD10C,0.100000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+X105791000Y-55562500D02*
+X190881000Y-55562500D01*
+X190881000Y-128333500D01*
+X105791000Y-128333500D01*
+X105791000Y-55562500D01*
+M02*
